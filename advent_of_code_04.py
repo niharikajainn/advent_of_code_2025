@@ -41,7 +41,7 @@ def part_two():
 
 def children(row,col):
 	children_rows = [row]
-	children_cols = [col]q
+	children_cols = [col]
 	if(row > 0):
 		children_rows.append(up(row))
 	if(row < num_rows-1):
