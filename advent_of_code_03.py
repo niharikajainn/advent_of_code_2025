@@ -25,20 +25,20 @@ def part_one():
 	print(joltage)
 
 def part_two():
+	NUM_BATTERIES_ON = 12
 	banks = parse()
 	joltage = 0
 	for bank in banks:
 		max_idx = 0
-		for battery_idx in range(0, 12):
+		for battery_idx in range(0, NUM_BATTERIES_ON):
 			max_rating = bank[max_idx]
-			for x in range(max_idx+1, len(bank)-(12-battery_idx)+1):
+			for x in range(max_idx+1, len(bank)-(NUM_BATTERIES_ON-battery_idx)+1):
 				if bank[x] > max_rating:
 					max_rating = bank[x]
 					max_idx = x
-			joltage += 10 ** (11-battery_idx) * max_rating
+			joltage += 10 ** (NUM_BATTERIES_ON-1 - battery_idx) * max_rating
 			max_idx += 1
 	print(joltage)
-
 
 if __name__=="__main__":
     main()
