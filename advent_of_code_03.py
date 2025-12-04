@@ -28,7 +28,6 @@ def part_two():
 	banks = parse()
 	joltage = 0
 	for bank in banks:
-		on_batteries = dict()
 		max_idx = 0
 		for battery_idx in range(0, 12):
 			max_rating = bank[max_idx]
