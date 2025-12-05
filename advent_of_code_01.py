@@ -11,15 +11,10 @@ def part_one():
 	for rotation in rotations:
 		direction, ticks = rotation[0], int(rotation[1:])
 
-		allowance = index
-		if (direction == "R"):
-			allowance = 100 - index
+		allowance = index if direction == "L" else 100 - index
 		ticks_past_first_zero = ticks - allowance
 		final_leftover = ticks_past_first_zero % 100
-		index = final_leftover
-
-		if (final_leftover > 0 and direction == "L"):
-			index = 100 - final_leftover
+		index = 100 - final_leftover if final_leftover > 0 and direction == "L" else final_leftover
 
 		if index == 0:
 			count_zeros += 1
