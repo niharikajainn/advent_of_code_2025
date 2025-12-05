@@ -32,11 +32,9 @@ def part_two():
 	for rotation in rotations:
 		direction, ticks = rotation[0], int(rotation[1:])
 
-		allowance = index
-		if (direction == "R"):
-			allowance = 100 - index
-
+		allowance = index if direction == "L" else 100 - index
 		ticks_past_first_zero = ticks - allowance
+
 		if allowance > 0 and ticks_past_first_zero > 0:
 			count_zeros += 1
 		final_leftover = ticks_past_first_zero % 100
@@ -44,11 +42,9 @@ def part_two():
 		full_rotations = int(ticks_past_first_zero / 100)
 		if full_rotations > 0 and final_leftover == 0:
 			count_zeros -= 1
-		count_zeros += full_rotations
-		index = final_leftover
 
-		if (final_leftover > 0 and direction == "L"):
-			index = 100 - final_leftover
+		count_zeros += full_rotations
+		index = 100 - final_leftover if final_leftover > 0 and direction == "L" else final_leftover
 
 		if index == 0:
 			count_zeros += 1
